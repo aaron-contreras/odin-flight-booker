@@ -1,12 +1,8 @@
 # frozen_string_literal: true
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Clean slate
+Airport.delete_all
+Flight.delete_all
 
 # Create test airports
 
@@ -15,7 +11,21 @@ puts '================='
 
 # Airports gem's iata_codes method fetches all IATA codes for airports
 # around the world.
-Airports.iata_codes.take(50).each { |code| Airport.create!(code: code) }
+airports = Airports.iata_codes.take(50).map do |code|
+  Airport.create!(code: code)
+end
 
 puts 'Created airports'
 puts '================='
+
+# Create test flights
+
+200.times do
+  departure_airport, arrival_airport = airports.sample(2)
+  departure_time = rand(1..500).hours.from_now
+  duration = rand(60..1440)
+  Flight.create!(departure_airport: departure_airport,
+                 arrival_airport: arrival_airport,
+                 departure_time: departure_time,
+                 duration: duration)
+end
