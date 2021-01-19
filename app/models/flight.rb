@@ -6,12 +6,12 @@ class Flight < ApplicationRecord
   belongs_to :arrival_airport, class_name: 'Airport'
 
   def self.departure_times
-    all.select(:departure_time)
+    all.select(:departure_date)
        .distinct
-       .order(:departure_time, :asc)
+       .order(:departure_date, :asc)
   end
 
   def formatted_date
-    departure_time.strftime('at %H:%M on %m/%d/%Y')
+    departure_date.strftime('%m/%d/%Y')
   end
 end
