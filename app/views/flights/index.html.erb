@@ -10,15 +10,15 @@
         <%= f.label :arrival_airport %>
       </div>
       <div class="input-field col m6 s12">
-        <%= f.select :passengers, (1..4) %>
-        <%= f.label :passengers %>
+        <%= f.select :number_of_passengers, (1..4) %>
+        <%= f.label :number_of_passengers %>
       </div>
       <div class="input-field col m6 s12">
         <%= f.select :departure_date, options_from_collection_for_select(Flight.all_departure_dates, :departure_date, :formatted_date) %>
         <%= f.label :departure_date, 'Date' %>
       </div>
       <div class="input-field col">
-        <%= f.submit 'Find a flight',
+        <%= f.button 'Find a flight',
                       class: 'waves-effect waves-light btn' %>
       </div>
     <% end %>
@@ -31,15 +31,16 @@
       <div class="col">
         <p>We've found some matches</p>
         <%= form_with url: new_booking_path, method: :get do |f| %>
+          <%= f.hidden_field :number_of_passengers, value: params[:number_of_passengers] %>
           <% @flights.each do |flight| %>
                 <p>
                 <%= f.label "flight_id_#{flight.id}" do %>
-                    <%= radio_button :flight, :id, flight.id %>
+                    <%= f.radio_button :flight_id, flight.id %>
                     <span><%= flight.details %></span>
                   <% end %>
                 </p>
           <% end %>
-          <%= f.submit 'Book Flight', class: 'waves-effect waves-light btn' %>
+          <%= f.button 'Book Flight', class: 'waves-effect waves-light btn' %>
         <% end %>
       </div>
     </div>
