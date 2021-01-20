@@ -22,10 +22,10 @@ puts '================='
 
 200.times do
   departure_airport, arrival_airport = airports.sample(2)
-  departure_time = rand(1..500).hours.from_now
+  departure_date = rand(1..90).days.from_now
   duration = rand(60..1440)
   Flight.create!(departure_airport: departure_airport,
                  arrival_airport: arrival_airport,
-                 departure_time: departure_time,
+                 departure_date: departure_date,
                  duration: duration)
 end

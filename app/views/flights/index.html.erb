@@ -21,10 +21,18 @@
     </div>
   <% end %>
 </div>
-<div class="row">
-  <% @flights.each do |flight| %>
-    <p>
-      <%= flight %>
-    </p>
-  <% end %>
-</div>
+<% unless @flights.empty? %>
+  <div class="row">
+    <p>We've found some matches</p>
+    <%= form_with url: new_booking_path, method: :get do |f| %>
+      <% @flights.each do |flight| %>
+            <p>
+            <%= f.label "flight_id_#{flight.id}" do %>
+                <%= radio_button :flight, :id, flight.id %>
+                <span><%= flight.details %></span>
+              <% end %>
+            </p>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
