@@ -1,0 +1,22 @@
+<%= form_with url: flights_path, method: :get do |f| %>
+  <div class="input-field col m6 s12">
+    <%= f.select :departure_airport, options_from_collection_for_select(Airport.all, :id, :code) %>
+    <%= f.label :departure_airport %>
+  </div>
+  <div class="input-field col m6 s12">
+    <%= f.select :arrival_airport, options_from_collection_for_select(Airport.all, :id, :code) %>
+    <%= f.label :arrival_airport %>
+  </div>
+  <div class="input-field col m6 s12">
+    <%= f.select :number_of_passengers, (1..4) %>
+    <%= f.label :number_of_passengers %>
+  </div>
+  <div class="input-field col m6 s12">
+    <%= f.select :departure_date, options_from_collection_for_select(Flight.all_departure_dates, :departure_date, :formatted_date) %>
+    <%= f.label :departure_date, 'Date' %>
+  </div>
+  <div class="input-field col">
+    <%= f.button 'Find a flight',
+                  class: 'waves-effect waves-light btn' %>
+  </div>
+<% end %>

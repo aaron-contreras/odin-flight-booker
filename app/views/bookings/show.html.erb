@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col s12 m6">
+    <div class="card blue-grey">
+      <div class="card-content white-text">
+        <span class="card-title">Booking info</span>
+        <div class="section">
+          <%= render partial: 'flights/flight', locals: { flight: @booking.flight } %>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+          <strong>Passengers</strong>
+          <% @booking.passengers.each do |passenger| %>
+            <%= render partial: 'passengers/passenger', locals: { passenger: passenger } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

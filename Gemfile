@@ -32,6 +32,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 # Provides useful data for airports
 gem 'airports', '~> 1.6.1'
+gem 'materialize-sass', '~> 1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -49,6 +50,7 @@ group :development do
   gem 'spring'
 
   gem 'better_errors', '~> 2.9', '>= 2.9.1'
+  gem 'binding_of_caller'
   gem 'guard-livereload', '~> 2.5', '>= 2.5.2'
   gem 'rack-livereload', '~> 0.3.17'
 end

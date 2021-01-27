@@ -1,0 +1,12 @@
+<%= form_with url: new_booking_path, method: :get do |f| %>
+  <%= f.hidden_field :number_of_passengers, value: params[:number_of_passengers] %>
+  <% @flights.each do |flight| %>
+        <p>
+        <%= f.label "flight_id_#{flight.id}" do %>
+            <%= f.radio_button :flight_id, flight.id %>
+            <span><%= flight.details %></span>
+          <% end %>
+        </p>
+  <% end %>
+  <%= f.button 'Passenger info', class: 'waves-effect waves-light btn' %>
+<% end %>

@@ -1,16 +1,32 @@
 <%= form_with model: @booking do |f| %>
-  <p>Departure date: <%= @booking.flight.departure_date %></p>
-  <p>Departing from: <%= @booking.departure_airport.code %></p>
-  <p>Arriving at: <%= @booking.arrival_airport.code %></p>
-  <p>Flight #<%= @booking.flight_id %></p>
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card blue-grey">
+        <div class="card-content white-text">
+          <span class="card-title">Flight info</span>
+          <p><strong>Departure date:</strong> <%= @booking.flight.departure_date %></p>
+          <p><strong>Departing from:</strong> <%= @booking.departure_airport.code %></p>
+          <p><strong>Arriving at:</strong> <%= @booking.arrival_airport.code %></p>
+          <p><strong>Flight #<%= @booking.flight_id %></strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
   <%= f.hidden_field :flight_id, value: @booking.flight_id %>
+  <h4>Passenger info</h4>
   <% @passengers.each do |passenger| %>
     <%= f.fields_for :passengers_attributes, index: passenger.id do |p| %>
-      <%= p.label :name %>
-      <%= p.text_field :name %>
-      <%= p.label :email %>
-      <%= p.email_field :email %>
+      <div class="row">
+        <div class="col s6 input-field">
+          <%= p.label :name, 'Name' %>
+          <%= p.text_field :name %>
+        </div>
+        <div class="col s6 input-field">
+          <%= p.label :email, 'Email address' %>
+          <%= p.email_field :email %>
+        </div>
+      </div>
     <% end %>
   <% end %>
-  <%= f.button %>
+  <%= f.button 'Book Flight', class: 'waves-effect waves-light btn' %>
 <% end %>
