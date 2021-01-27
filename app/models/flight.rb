@@ -9,7 +9,7 @@ class Flight < ApplicationRecord
   def self.all_departure_dates
     all.select(:departure_date)
        .distinct
-       .order(:departure_date, :asc)
+       .order(departure_date: :asc)
   end
 
   def details
