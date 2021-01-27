@@ -5,7 +5,7 @@ class ChangeDepartureTimeToDepartureDateOnFlights < ActiveRecord::Migration[6.1]
   def change
     change_table :flights do |t|
       t.rename :departure_time, :departure_date
-      t.change :departure_date, :datet
+      t.change :departure_date, :date
     end
   end
 end
