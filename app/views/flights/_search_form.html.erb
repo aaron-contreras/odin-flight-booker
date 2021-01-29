@@ -1,11 +1,11 @@
 <%= form_with url: flights_path, method: :get do |f| %>
   <div class="input-field col m6 s12">
-    <%= f.select :departure_airport, options_from_collection_for_select(Airport.all, :id, :code) %>
-    <%= f.label :departure_airport %>
+    <%= f.select :departure_airport_id, options_from_collection_for_select(Airport.all, :id, :code) %>
+    <%= f.label :departure_airport_id, 'Departure airport' %>
   </div>
   <div class="input-field col m6 s12">
-    <%= f.select :arrival_airport, options_from_collection_for_select(Airport.all, :id, :code) %>
-    <%= f.label :arrival_airport %>
+    <%= f.select :arrival_airport_id, options_from_collection_for_select(Airport.all, :id, :code) %>
+    <%= f.label :arrival_airport_id, 'Arrival airport' %>
   </div>
   <div class="input-field col m6 s12">
     <%= f.select :number_of_passengers, (1..4) %>

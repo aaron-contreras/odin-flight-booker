@@ -3,8 +3,12 @@
 # Controller for the Flights resource
 class FlightsController < ApplicationController
   def index
-    @flights = Flight.where(departure_airport_id: params[:departure_airport],
-                            arrival_airport_id: params[:arrival_airport],
-                            departure_date: params[:departure_date])
+    @flights = Flight.where(flight_params)
+  end
+
+  private
+
+  def flight_params
+    params.permit(:departure_airport_id, :arrival_airport_id, :departure_date)
   end
 end

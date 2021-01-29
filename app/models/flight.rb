@@ -6,11 +6,11 @@ class Flight < ApplicationRecord
   belongs_to :arrival_airport, class_name: 'Airport'
   has_many :bookings, dependent: :destroy
 
-  def self.all_departure_dates
+  scope :all_departure_dates, lambda {
     all.select(:departure_date)
        .distinct
        .order(departure_date: :asc)
-  end
+  }
 
   def details
     "Flight##{id} #{departure_airport.code} -> #{arrival_airport.code} on #{formatted_date}".upcase
