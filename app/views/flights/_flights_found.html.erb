@@ -2,8 +2,8 @@
   <%= f.hidden_field :number_of_passengers, value: params[:number_of_passengers] %>
   <% @flights.each do |flight| %>
         <p>
-        <%= f.label "flight_id_#{flight.id}" do %>
-            <%= f.radio_button :flight_id, flight.id %>
+          <%= f.label "flight_id_#{flight.id}" do %>
+            <%= f.radio_button :flight_id, flight.id, checked: @flights.first == flight %>
             <span><%= flight.details %></span>
           <% end %>
         </p>

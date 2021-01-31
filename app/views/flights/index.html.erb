@@ -4,12 +4,16 @@
   </div>
 </div>
 <div class="divider"></div>
-<% unless @flights.empty? %>
+<% if @flights %>
   <div class="section">
     <div class="row">
       <div class="col">
-        <p>We've found some matches</p>
-        <%= render "flights/flights_found" %>
+        <% if @flights.empty? %>
+          <p>No flights match your search criteria<p>
+        <% else %>
+          <p>We've found some matches</p>
+          <%= render "flights/flights_found" %>
+        <% end %>
       </div>
     </div>
   </div>

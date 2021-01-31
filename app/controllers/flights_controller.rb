@@ -3,7 +3,7 @@
 # Controller for the Flights resource
 class FlightsController < ApplicationController
   def index
-    @flights = Flight.where(flight_params)
+    @flights = Flight.where(flight_params) unless flight_params.empty?
   end
 
   private
