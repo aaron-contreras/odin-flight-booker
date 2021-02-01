@@ -11,6 +11,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
 
     if @booking.save
+      flash[:success] = 'Booking confirmation emails have been sent to each passenger.'
       send_thank_you_email
       redirect_to @booking
     else

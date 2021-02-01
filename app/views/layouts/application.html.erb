@@ -18,6 +18,11 @@
   </head>
 
   <body>
+    <% flash.each do |type, message| %>
+      <div class="notification">
+        <%= message %>
+      </div>
+    <% end %>
     <%= render "shared/header" %>
     <main>
         <div class="section">

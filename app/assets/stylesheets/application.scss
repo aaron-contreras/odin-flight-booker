@@ -30,3 +30,9 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+.notification {
+  background: $secondary-color;
+  text-align: center;
+  color: white;
+}
