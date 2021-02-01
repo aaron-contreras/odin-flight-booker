@@ -1,0 +1,13 @@
+<h1>Thanks for booking with us</h1>
+<p>Keep this email handy.</p>
+<h2>Booking information</p>
+
+<h3>Flight</h3>
+<p><strong>Departure date:</strong> <%= @flight.departure_date %></p>
+<p><strong>Departing from:</strong> <%= @flight.departure_airport.code %></p>
+<p><strong>Arriving at:</strong> <%= @flight.arrival_airport.code %></p>
+<p><strong>Flight #<%= @flight.id %></strong></p>
+<h3>Passengers</h3>
+<% @passengers.each do |passenger| %>
+  <p>Name: <%= passenger.name %>, Email: <%= passenger.email %></p>
+<% end %>

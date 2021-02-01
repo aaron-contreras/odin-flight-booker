@@ -54,6 +54,7 @@ group :development do
   gem 'rack-livereload', '~> 0.3.17'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
+  gem 'letter_opener'
 end
 
 group :test do

@@ -1,0 +1,23 @@
+***Thanks for booking with us***
+============================
+Keep this email handy.
+
+=========================
+***Booking information***
+=========================
+
+==========================
+****Flight****
+
+*Departure date: <%= @flight.departure_date %>
+*Departing from: <%= @flight.departure_airport.code %>
+*Arriving at: <%= @flight.arrival_airport.code %>
+*Flight #<%= @flight.id %>
+===========================
+
+===========================
+****Passengers****
+<% @passengers.each do |passenger| %>
+  *Name: <%= passenger.name %>, *Email: <%= passenger.email %>
+<% end %>
+===========================
